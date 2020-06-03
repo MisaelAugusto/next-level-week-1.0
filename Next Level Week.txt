@@ -1,0 +1,26 @@
+// Métodos HTTP:
+
+// GET: Buscar uma ou mais informações do back-end
+// POST: Criar uma nova informação no back-end
+// PUT: Atualizar uma informação no back-end
+// DELETE: Remover uma informação do back-end
+// POST http://localhost:3333/users = Criar um usuário
+// GET http://localhost:3333/users = Listar usuários
+// GET http://localhost:3333/users/1 = Buscar dados do usuário com id 1
+
+// TIPOS DE PARÂMETROS:
+
+// Request Param: Parâmetros que vêm na própria rota que identificam um recurso
+// Query Param: Parâmetros que vêm na própria rota (geralmente opcionais) para filtros, paginação, etc.
+// Request Body: Parâmetros para criação/atualização de informações
+
+// QUERY BUILDER (SQL)
+
+// SELECT * FROM users WHERE name = 'Misael'
+// knex('users').where('name', 'Misael').select('*')
+
+// Controllers
+
+// index, show, create, update, delete
+// Service Pattern
+// Repository Pattern (Data Mapper)
