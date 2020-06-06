@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowLeft, FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import axios from 'axios';
 import { LeafletMouseEvent } from 'leaflet';
@@ -23,6 +23,17 @@ interface Item {
   image_url: string;
 }
 
+interface Point {
+  name: string;
+  email: string;
+  whatsapp: string;
+  uf: string;
+  city: string;
+  latitude: string;
+  longitude: string;
+  items: string;
+}
+
 interface IBGEUFResponse {
   sigla: string;
 }
@@ -32,7 +43,9 @@ interface IBGECityResponse {
 }
 
 const CreatePoint = () => {
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(0);
+
+  const [points, setPoints] = useState<Point[]>([]);
 
   const [items, setItems] = useState<Item[]>([]);
   const [UFs, setUFs] = useState<string[]>([]);
@@ -48,7 +61,6 @@ const CreatePoint = () => {
   const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
   const [selectedFile, setSelectedFile] = useState<File>();
 
-
   const history = useHistory();
 
   useEffect(() => {
@@ -57,6 +69,12 @@ const CreatePoint = () => {
     });
   }, []);
 
+  useEffect(() => {
+    api.get('points-all').then(response => {
+      setPoints(response.data);
+    });
+  }, []);
+  
   useEffect(() => {
     axios.get<IBGEUFResponse[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
       .then(response => {
@@ -143,16 +161,17 @@ const CreatePoint = () => {
       data.append('image', selectedFile);
     }
 
-    //const data = {
-    //  name, email, whatsapp, uf, city, latitude, longitude, items
-    //};
-
-    await api.post('points', data);
-
-    setSuccess(true);
+    const filteredPoints = points.filter(point => (point.name === name || point.email === email ||
+      point.whatsapp === whatsapp));
+      
+    if (filteredPoints.length === 0) {
+      await api.post('points', data);
+      setSuccess(1);
+    } else {
+      setSuccess(2);
+    }
 
     const backToHome = () => history.push('/');
-
     setTimeout(backToHome, 2000);
   }
 
@@ -167,12 +186,17 @@ const CreatePoint = () => {
         </Link>
       </header>
       
-      { success ?
+      { success === 1 ?
         <div className="success">
-          <FiCheckCircle />
-          Cadastro Concluído!
+          <FiCheckCircle color="#67FB37" size={60}/><br/>
+          <h1>Cadastro Concluído!</h1>
         </div>
-        : null }
+        : ( success === 2 ?
+            <div className="success">
+              <FiXCircle color="#EE3316" size={60}/><br/>
+              <h1>Erro no cadastro!</h1>
+            </div>
+          : null)}
 
       <form onSubmit={handleSubmit}>
         <h1>Cadastro do<br/> ponto de coleta</h1>

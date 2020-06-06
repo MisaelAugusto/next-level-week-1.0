@@ -13,7 +13,7 @@ Project, named Ecoleta, developed during the first edition of the "Next Level We
   * Programming Language: Typescript
 
 :pushpin: **Bonus:**
-  - [ ] Success Message (Front-end)
-  - [ ] Failed Message (Front-end)
+  - [x] Success Message (Front-end)
+  - [x] Failed Message (Front-end)
   - [ ] Get UF in IBGE API (Mobile)
   - [ ] Get City in IBGE API (Mobile)

@@ -15,8 +15,9 @@ const itemsController = new ItemsController();
 
 routes.get('/items', itemsController.index);
 
-routes.get('/points', pointsController.index);
+routes.get('/points-all', pointsController.showAll);
 routes.get('/points/:id', pointsController.show);
+routes.get('/points', pointsController.index);
 
 routes.post(
     '/points',
@@ -30,7 +31,7 @@ routes.post(
         longitude: Joi.number().required(),
         city: Joi.string().required(),
         uf: Joi.string().required().max(2),
-        items: Joi.string().required
+        items: Joi.string().required()
       })
     }, {
       abortEarly: false

@@ -24,7 +24,7 @@ class PointsController {
             };
         })
 
-        return response.json(points);
+        return response.json(serializedPoints);
     }
 
     async show(request: Request, response: Response) {
@@ -47,6 +47,19 @@ class PointsController {
             .select('items.title');
 
         return response.json({ point: serializedPoint, items });
+    }
+
+    async showAll(request: Request, response: Response) {
+        const points = await knex('points');
+
+        const serializedPoints = points.map(point => {
+            return {
+                ...point,
+                image_url: `http://192.168.15.5:3333/uploads/${point.image}`
+            };
+        })
+
+        return response.json(serializedPoints);
     }
 
     async create(request: Request, response: Response) {
