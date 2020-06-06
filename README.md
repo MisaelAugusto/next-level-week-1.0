@@ -1,18 +1,18 @@
 # Next Level Week 1.0 - Ecoleta
 
-**Descrição:**
- Projeto desenvolvido durante a primeira edição do evento "Next Level Week" realizado pela RocketSeat. O objetivo do evento é mostrar na prática como utilizar as tecnologias NodeJs, ReactJs, React Native com a linguagem de programação Typescript para criar aplicações reais para a web e também para dispositivos mobile.
+**Description:**
+Project, named Ecoleta, developed during the first edition of the "Next Level Week" event held by RocketSeat. The purpose of the event is to show in practice how to use NodeJs, React, React Native technologies with a Typed programming language to create real applications for the web and also for mobile devices.
 
 ![](./Ecoleta.jpeg)
 
-**Tecnologies:**
+:computer: **Tecnologies:**
   * Back-end: NodeJs
   * Front-end: React
   * App mobile: React Native
   * Database: sqlite3 + knex
   * Programming Language: Typescript
 
-**Bonus:**
+:pushpin: **Bonus:**
   - [ ] Success Message (Front-end)
   - [ ] Failed Message (Front-end)
   - [ ] Get UF in IBGE API (Mobile)
