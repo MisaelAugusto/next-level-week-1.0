@@ -15,5 +15,5 @@ Project, named Ecoleta, developed during the first edition of the "Next Level We
 :pushpin: **Bonus:**
   - [x] Success Message (Front-end)
   - [x] Failed Message (Front-end)
-  - [ ] Get UF in IBGE API (Mobile)
-  - [ ] Get City in IBGE API (Mobile)
+  - [x] Get UF in IBGE API (Mobile)
+  - [x] Get City in IBGE API (Mobile)
