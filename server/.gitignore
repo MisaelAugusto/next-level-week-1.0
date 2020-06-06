@@ -1,2 +1,9 @@
 # dependencies
 /node_modules
+
+# uploads
+uploads/*
+!uploads/.gitkeep
+
+# database
+*.sqlite
