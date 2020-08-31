@@ -81,8 +81,8 @@
   # execute as seeds
   yarn knex seed:run
 
-  # abra o arquivo 'ItemsController.ts' e modifique o
-  # atributo 'image_url' de acordo com o ip da sua rede
+  # abra os arquivos 'ItemsController.ts' e 'PointsController.ts' e modifique
+  # os valores do atributo 'image_url' de acordo com o ip da sua rede
 ```
 
 <h3>4. Execute o backend:</h3>
